@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "Exercise 2-Logistic Regression"
+		},
+		{
+			"path": "Exercise 3-neural network"
+		},
+		{
+			"path": "Exercise 4-backpropagation"
 		}
 	],
 	"settings": {}

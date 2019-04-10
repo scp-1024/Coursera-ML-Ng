@@ -90,8 +90,8 @@ def main():
     X = np.insert(X, 0, 1, axis=1)
     y = expand_y(y)
     theta1, theta2 = load_weight()
-    cost_reg(theta1, theta2, X, y, 1)  #0.38376985909092354
-
+    print(cost_reg(theta1, theta2, X, y, 1))  #0.38376985909092354
+    
 
 if __name__ == "__main__":
     main()

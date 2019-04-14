@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "Exercise 4-backpropagation"
+		},
+		{
+			"path": "Exercise 5-Bias and Variance"
 		}
 	],
 	"settings": {}

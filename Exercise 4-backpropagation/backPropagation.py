@@ -53,12 +53,12 @@ def gradient_check(theta1,theta2,X,y,e):
         grad_i=(cost_reg(plus,X,y,1)-cost_reg(minus,X,y,1))/(e*2)
         numeric_grad.append(grad_i)
 
-    numeric_grad=np.array(numeric_grad) #近似梯度矩阵 (10285,)
-    print(numeric_grad.shape)
+    numeric_grad=np.array(numeric_grad) #近似梯度矩阵 (10285,)  数值梯度
+
     reg_D1,reg_D2=regularized_gradient(theta_temp,X,y)
-    analytic_grad=serialize(reg_D1,reg_D2)
+    analytic_grad=serialize(reg_D1,reg_D2) # 解析梯度
     
-    diff = np.linalg.norm(numeric_grad - analytic_grad) / np.linalg.norm(numeric_grad + analytic_grad)
+    diff = np.linalg.norm(numeric_grad - analytic_grad) / np.linalg.norm(numeric_grad + analytic_grad) # 求范数
 
     print('If your backpropagation implementation is correct,\nthe relative difference will be smaller than 10e-9 (assume epsilon=0.0001).\nRelative Difference: {}\n'.format(diff))
 
@@ -91,7 +91,6 @@ def nn_training(X, y):
 
 def accuracy(theta, X, y):
     theta1, theta2 = deserialize(theta)
-    print(theta1)
     _, _, _, h = ff.feed_forward(theta1, theta2, X)
     y_pred = np.argmax(h, axis=1) + 1
 
@@ -116,11 +115,10 @@ def main():
     X, raw_y = ff.load_mat(path)
     X = np.insert(X, 0, 1, axis=1)
     y = ff.expand_y(raw_y)  # y的一行表示一个样本
-    theta1, theta2 = ff.load_weight()
-    gradient_check(theta1,theta2,X,y,0.0001)
-    # theta_unroll = nn_training(X, y)
-    # print(theta_unroll.x)
-    # accuracy(theta_unroll.x, X, raw_y)
+    # theta1, theta2 = ff.load_weight()
+    # gradient_check(theta1,theta2,X,y,0.0001)
+    theta_unroll = nn_training(X, y)
+    accuracy(theta_unroll.x, X, raw_y)
 
 
 if __name__ == "__main__":

@@ -7,6 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import loadmat
 import scipy.optimize as opt
+import ployFeatures as pf
+import featureNormalization as fn
 
 
 def plot_data(theta, X, y):
@@ -55,6 +57,15 @@ def plot_learning_curve(theta,X,y,Xval,yval,lmd):
         error_cv.append(cv_train)
 
     fig,ax=plt.subplots(figsize=(8,5))
+    ax.plot(range(1,len(X)+1),error_train,label="Train")
+    ax.plot(range(1,len(X)+1),error_cv,label="Cross Validation",color="green")
+    ax.legend()
+    plt.xlim(left=0)
+    plt.ylim(bottom=0)
+    plt.xlabel("Number of training examples")
+    plt.ylabel('error')
+    plt.title('Learning curve of linear regression')
+    plt.show()
 
 
 
@@ -74,9 +85,13 @@ def main():
 
     # 初始化theta
     theta = np.ones(X.shape[1])
-    plot_learning_curve(theta,X,y,Xval,yval,0)
+    # plot_learning_curve(theta,X,y,Xval,yval,0)
 
-
+    '''增加多项式特征'''
+    p=5
+    X_ploy=pf.ploy_features(X,p)
+    Xval_ploy=pf.ploy_features(Xval,p)
+    Xtest_ploy=pf.ploy_features(Xtest,p)
     
 
 

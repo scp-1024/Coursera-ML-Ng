@@ -17,6 +17,9 @@
 		},
 		{
 			"path": "Exercise 6-SVM"
+		},
+		{
+			"path": "Exercise 7-K-means and PCA"
 		}
 	],
 	"settings": {}

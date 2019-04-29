@@ -90,8 +90,8 @@ def main():
     X = data['X']
     y = data['y'].flatten()
 
-    # data2=loadmat('spamTest.mat')
-    # Xtest,ytest=data2['Xtest'],data2['ytest']
+    data2=loadmat('spamTest.mat')
+    Xtest,ytest=data2['Xtest'],data2['ytest']
 
     clf = svm.SVC(C=0.1, kernel='linear')
     clf.fit(X, y)

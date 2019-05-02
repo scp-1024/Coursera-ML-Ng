@@ -82,16 +82,16 @@ def run_kmeans(X,centroids,max_iters):
 #==============================随机初始化聚类中心
 def random_centroids(X,K):
     m=X.shape[0]
-    index=np.random.choice(m,K)
+    index=np.random.choice(m,K) #在0~m中随机生成K个样本
     
     return X[index]
 
 
 def main():
-    '''
+    
     data=loadmat('ex7data2.mat')
     X=data['X']
-
+    '''
     for i in range(3):
         init_centroids=random_centroids(X,3)
 
@@ -103,6 +103,7 @@ def main():
     # plt.imshow(img)
     # plt.show()
     # print(img.shape)
+    
     img=img/255
     X=img.reshape(-1,3) #转换成128x128行，3列为RGB三通道
     K=16 #16个聚类中心，就是把所有颜色压缩为16种RGB颜色，那么每个像素值需要4bit存储即可
@@ -112,14 +113,15 @@ def main():
     centroids=centroids_all[-1]
     
     for i in range(len(centroids)):
-        img_2[idx==i]=centroids[i]
-    
+        img_2[idx==i]=centroids[i] #将原始图像中每个样本点的位置转换为它所属簇的聚类中心位置 实现压缩
     
     img_2=img_2.reshape((128,128,3))
+    print(img_2)
     fig,axes=plt.subplots(1,2,figsize=(12,6))
     axes[0].imshow(img)
     axes[1].imshow(img_2)
     plt.show()
+
     
 
 if __name__ == "__main__":

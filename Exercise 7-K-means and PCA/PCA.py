@@ -100,20 +100,22 @@ def plot_face(X,row,col):
 
 
 def main():
+    '''
     data = loadmat('ex7data1.mat')
     X = data['X']
-    '''
+    
     X_norm, means = feature_normalize(X)
     U, S, V = pca(X_norm)
 
     # plot_data(X)
     # plot_reduce(means,U,S)
-
+    
     K = 1
     Z = project_data(X_norm, U, K)
     X_rec = recover_data(Z, U, K)
     visualize_data(X_norm, X_rec)
     '''
+    
     data_2=loadmat('ex7faces.mat')
     X_2=data_2['X']
     X_2_norm,means_2=feature_normalize(X_2)

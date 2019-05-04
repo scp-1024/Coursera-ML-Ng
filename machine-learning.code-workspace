@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "Exercise 7-K-means and PCA"
+		},
+		{
+			"path": "Exercise 8-Anomaly detection and RC"
 		}
 	],
 	"settings": {}
